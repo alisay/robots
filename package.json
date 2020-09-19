@@ -1,0 +1,23 @@
+{
+  "name": "toy-robot-sim",
+  "version": "1.0.0",
+  "description": "Toy Robot Simulator",
+  "main": "bin/index.js",
+  "scripts": {
+    "start": "node .",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alisay/robots.git"
+  },
+  "author": "alisa blakeney",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alisay/robots/issues"
+  },
+  "homepage": "https://github.com/alisay/robots#readme",
+  "bin": {
+    "robots": ".bin/index.js"
+  }
+}

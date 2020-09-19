@@ -1,4 +1,5 @@
-const { start } = require('repl');
+#!/usr/bin/env node
+
 const Robot = require("./robot");
 fs = require('fs');
 
@@ -32,7 +33,7 @@ const takeCommand = (file)=>{
                     break;
                 default:
                     if (element.startsWith("place")){
-                        arguments = element.slice(6).split(",")
+                        const arguments = element.slice(6).split(",")
                         roboguy.place(arguments)
                     }
                     "out of moves"
@@ -42,5 +43,5 @@ const takeCommand = (file)=>{
 }
 
 
-console.log(takeCommand(inputFile));
+takeCommand(inputFile);
 

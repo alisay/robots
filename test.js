@@ -1,6 +1,6 @@
 const Robot = require("./robot");
 const roboguy = new Robot();
-const parsedData = [ 'place 1,2,east', 'move', 'move', 'left', 'move', 'report', '' ]
+const parsedData = [ 'place 1,2,east', 'move', 'move', 'right', 'move', 'report', '' ]
 const startingIndex = parsedData.findIndex(element=> element.startsWith('place'));
 
 const doIt = ()=>{

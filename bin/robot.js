@@ -5,7 +5,7 @@ class Robot {
         this.f = xyf[2]    
     }
 
-    move(){
+    move(){//deal with movign off the board
         switch (this.f){
             case "north":
                 this.y++;
