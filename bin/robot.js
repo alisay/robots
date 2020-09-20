@@ -5,34 +5,42 @@ class Robot {
         this.f = xyf[2]    
     }
 
-    move(){//deal with movign off the board
+    move(){
         switch (this.f){
             case "north":
+                if (this.y<4){
                 this.y++;
+                }
                 break;
             case "south":
-                this.y--;
+                if (this.y>0){
+                    this.y--;
+                }
                 break;
             case "east":
-                this.x++;
+                if (this.x<4){
+                    this.x++;
+                }
                 break;
             case "west":
-                this.x--;
+                if (this.x>0){
+                    this.x--;
+                }
                 break;
             default:
                 "invalid input";
         }
     }
 
-    left(){
-        const f=["north","east","south","west"]
-        const index = ((f.indexOf(this.f)-1)+4)% 4
-        this.f = f[index];
-    }
-
-    right(){
-        const f=["north","east","south","west"]
-        const index = ((f.indexOf(this.f)+1)% 4)
+    rotate(direction){
+        const f=["north","east","south","west"];
+        let index = f.indexOf(this.f);
+        if(direction === "left"){
+            index = ((index-1)+4)% 4;
+        } 
+        else if (direction === "right"){
+            index = (index+1)% 4;
+        }
         this.f = f[index];
     }
 

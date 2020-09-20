@@ -11,32 +11,37 @@ const takeCommand = (file)=>{
         if(err){
             console.log(err);
         }
+        //return text in file as an array split by line
         parsedData = data
             .toLowerCase()
             .split(/\n/)
             .map(datum=>datum.trim());
         console.log(parsedData);
 
+        //identify the first place command
         const startingIndex = parsedData.findIndex(element=> element.startsWith('place'));
 
+        //execute all commands, beginning with first place
         for (let index = startingIndex; index < parsedData.length; ++index){
             let element = (parsedData[index]);
-            switch(parsedData[index]){
+            switch(element){
                 case "move":
                     roboguy.move();
                     break;
                 case "left":
-                    roboguy.left();
+                    roboguy.rotate("left");
                     break;
                 case "right":
-                    roboguy.right();
+                    roboguy.rotate("right");
                     break;
+                case "report":
+                        roboguy.report();
+                        break;
                 default:
                     if (element.startsWith("place")){
-                        const arguments = element.slice(6).split(",")
-                        roboguy.place(arguments)
+                        const arguments = element.slice(6).split(",");
+                        roboguy.place(arguments);
                     }
-                    "out of moves"
             }
         }
     });    
