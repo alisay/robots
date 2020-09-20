@@ -1,8 +1,8 @@
 class Robot {
     place(xyf){
-        this.x = xyf[0]
-        this.y = xyf[1]
-        this.f = xyf[2]    
+            this.x = xyf[0];
+            this.y = xyf[1];
+            this.f = xyf[2];       
     }
 
     move(){

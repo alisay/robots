@@ -1,7 +1,8 @@
-    PLACE 0,0,NORTH
+    PLACE -1,0,SOUTH
     MOVE
     MOVE
     RIGHT
+    PLACE 0,0,NORTH
     MOVE
     MOVE
     REPORT
