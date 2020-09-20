@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 const Robot = require("./robot");
 fs = require('fs');
 

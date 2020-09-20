@@ -9,7 +9,7 @@ npm install
 run the program using the command 
 
 ```bash
-start ./input.txt
+npm start ./input.txt
 ```
 
 where the input file contains commands of the following form:
