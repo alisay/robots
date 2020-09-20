@@ -1,7 +1,8 @@
-    PLACE -1,0,SOUTH
+    PLACE 3,2,WEST
+    MOVE
+    LEFT
     MOVE
     MOVE
     RIGHT
     MOVE
-    MOVE
-    REPORT
+    REPORT 

@@ -45,6 +45,9 @@ class Robot {
     }
 
     report(){
+        if(!this.f){
+            return "robot has not been placed";
+        }
         return `${this.x}, ${this.y}, ${this.f.toUpperCase()}`; //announce the X,Y and F of the robot
     }
 }
