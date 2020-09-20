@@ -4,7 +4,7 @@
   "description": "Toy Robot Simulator",
   "main": "bin/index.js",
   "scripts": {
-    "start": "node .",
+    "run": "node .",
     "test": "jest"
   },
   "repository": {

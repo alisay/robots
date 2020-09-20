@@ -9,7 +9,7 @@ npm install
 run the program using the command 
 
 ```bash
-npm start ./input.txt
+npm run ./input.txt
 ```
 
 where the input file contains commands of the following form:
@@ -25,10 +25,10 @@ where the input file contains commands of the following form:
 install jest from command line with:
 
 ```bash
-npm install jest --global
+npm install jest
 ```
 then run the tests using:
 
 ```bash
-npm run test
+npm test
 ```
