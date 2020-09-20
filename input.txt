@@ -5,4 +5,5 @@
     PLACE 0,0,NORTH
     MOVE
     MOVE
+    PLACE 0,0,NORTH
     REPORT
