@@ -9,10 +9,10 @@ npm install
 run the program using the command 
 
 ```bash
-npm run ./input.txt
+npm start 
 ```
 
-where the input file contains commands of the following form:
+The program reads in commands from the input.txt file in the following form:
 
     PLACE X,Y,F
     MOVE

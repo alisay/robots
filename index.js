@@ -12,10 +12,10 @@ const readInput = ()=>{
 }
 
 const parseInput = (input) =>{
-    //return text in file as an array split by line
     if(!input){
         return false;
     }
+    //return text in file as an array split by line
     return input
         .toLowerCase()
         .split(/\n/)
@@ -28,55 +28,53 @@ const validateInput = (data)=>{
     }
     const commands = ['move', 'right', 'left', 'report']
 
-    const valid = data.filter(element=>commands.includes(element) || element.startsWith("place"))
+    //find commands which are of a valid format
+    const validCommands = data.filter(element=>commands.includes(element) || element.startsWith("place"))
     
     const integers = ["0","1","2","3","4"];
     const cardinals = ["north", "south", "east", "west"];
     
-    const invalidPlaces = valid
-                    .filter(element=>element.startsWith("place"))//identify place commands
-                    .map(element=> element.slice(6).split(",")) //create sub arrays of place arguments
-                    .filter(element=>!(integers.includes(element[0], element[1]) && cardinals.includes(element[2])))
-                    .map(element=>element.join())
-                    .map(element=>valid.indexOf(`place ${element}`))//find the index in original array 
-                    .reduceRight((__,item)=>valid.splice(item,1), null);//remove invalid items from original array
+    //find PLACEs with invalid arguments
+    const invalidPlaces = validCommands
+            .filter(command=>command.startsWith("place"))//identify place commands
+            .map(placeCommand=> placeCommand.slice(6).split(",")) //create sub arrays of place arguments
+            .filter(placeArguments=>!(integers.includes(placeArguments[0], placeArguments[1]) && cardinals.includes(placeArguments[2])));
 
-    return valid;
+    //find the index of those invalid PLACEs in the orignal valid commands array
+    const indexOfInvalidPlaces = invalidPlaces
+            .map(placeArguments=>placeArguments.join())//turn arguments back into a string
+            .map(argumentString=>validCommands.indexOf(`place ${argumentString}`));//find the index in original array 
+
+    //modify original valid commands array to remove invalid PLACEs
+    indexOfInvalidPlaces
+            .reduceRight((_, item) => validCommands.splice(item,1), null);
+
+    return validCommands;
+    }
+
+const ignoreStart = (data)=>{
+    if(!data){
+        return false;
+    }
+    const firstPlace = data.findIndex(element=> element.startsWith('place'));//find the index of the first PLACE command
+    return data.splice(firstPlace);//return commands from the first PLACE onwards
 }
 
 const executeCommands = (data)=>{
     if(!data){
         return false;
     }
-    //identify the first place command
-    const startingIndex = data.findIndex(element=> element.startsWith('place'));
 
-    //execute all commands, beginning with first place
-    for (let index = startingIndex; index < data.length; ++index){
-        let element = (data[index]);
-        switch(element){
-            case "move":
-                roboguy.move();
-                break;
-            case "left":
-                roboguy.rotate("left");
-                break;
-            case "right":
-                roboguy.rotate("right");
-                break;
-            case "report":
-                    console.log(roboguy.report());
-                    break;
-            default:
-                if (element.startsWith("place")){
-                    const args = element.slice(6).split(",");
-                    roboguy.place(args);
-                }
-        }
+    for (let index = 0; index < data.length; ++index){
+        if (data[index] === "move") roboguy.move();
+        if (data[index] === "left") roboguy.rotate("left");
+        if (data[index] === "right") roboguy.rotate("right");
+        if (data[index] === "report") console.log(roboguy.report());
+        if (data[index].startsWith("place")) roboguy.place(data[index].slice(6).split(","));
     }
 }
 
-executeCommands((validateInput(parseInput(readInput()))));
+executeCommands(ignoreStart((validateInput(parseInput(readInput())))));
 
 module.exports = {validateInput};
 

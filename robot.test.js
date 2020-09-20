@@ -1,10 +1,10 @@
 const Robot = require('./robot');
 
 describe("Robot", ()=>{
-    let r = new Robot();
+    let robot = new Robot();
     let x, y, f;
 
-    const report = ()=>`${r.x}, ${r.y}, ${r.f}`;
+    const report = ()=>`${robot.x}, ${robot.y}, ${robot.f}`;
 
     beforeEach(()=>{
         x = 0;
@@ -14,7 +14,7 @@ describe("Robot", ()=>{
 
     describe("place method", ()=>{
         const place = ()=>{
-            r.place([x,y,f]);
+            robot.place([x,y,f]);
             return report();
         };
         test("it should be placed in the correct location", ()=>{
@@ -24,8 +24,8 @@ describe("Robot", ()=>{
 
     describe("move method", ()=>{
         const move = () => {
-            r.place([x,y,f]);
-            r.move()
+            robot.place([x,y,f]);
+            robot.move()
             return report();
         };
         test("it should move in the correct direction", ()=>{
@@ -40,8 +40,8 @@ describe("Robot", ()=>{
     describe ("rotate method", ()=>{
         let direction;
         const rotate = ()=>{
-            r.place([x,y,f]);
-            r.rotate(direction);
+            robot.place([x,y,f]);
+            robot.rotate(direction);
             return report();
         };
         test("it should rotate clockwise", ()=>{
@@ -57,8 +57,8 @@ describe("Robot", ()=>{
 
     describe ("report method", ()=>{
         const report = ()=>{
-            r.place([x,y,f]);
-            return r.report();
+            robot.place([x,y,f]);
+            return robot.report();
         };
         test("it should report in correct format", ()=>{
             expect(report()).toEqual("0, 0, NORTH");

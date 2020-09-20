@@ -33,15 +33,15 @@ class Robot {
     }
 
     rotate(direction){
-        const f=["north","east","south","west"];
-        let index = f.indexOf(this.f);
+        const cardinals=["north","east","south","west"];
+        let index = cardinals.indexOf(this.f);
         if(direction === "left"){
             index = ((index-1)+4)% 4;
         } 
         else if (direction === "right"){
             index = (index+1)% 4;
         }
-        this.f = f[index];
+        this.f = cardinals[index];
     }
 
     report(){
