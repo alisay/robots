@@ -45,7 +45,7 @@ class Robot {
     }
 
     report(){
-        console.log(`${this.x}, ${this.y}, ${this.f.toUpperCase()}`);//announce the X,Y and F of the robot
+        return `${this.x}, ${this.y}, ${this.f.toUpperCase()}`; //announce the X,Y and F of the robot
     }
 }
 

@@ -3,4 +3,5 @@
     MOVE
     RIGHT
     MOVE
+    MOVE
     REPORT

@@ -6,7 +6,7 @@ fs = require('fs');
 const roboguy = new Robot();
 const inputFile = process.argv[2];
 
-const takeCommand = (file)=>{
+const takeInput= (file)=>{
     fs.readFile(file, 'utf8', (err,data)=>{
         if(err){
             console.log(err);
@@ -16,7 +16,6 @@ const takeCommand = (file)=>{
             .toLowerCase()
             .split(/\n/)
             .map(datum=>datum.trim());
-        console.log(parsedData);
 
         //identify the first place command
         const startingIndex = parsedData.findIndex(element=> element.startsWith('place'));
@@ -35,7 +34,7 @@ const takeCommand = (file)=>{
                     roboguy.rotate("right");
                     break;
                 case "report":
-                        roboguy.report();
+                        console.log(roboguy.report());
                         break;
                 default:
                     if (element.startsWith("place")){
@@ -48,5 +47,5 @@ const takeCommand = (file)=>{
 }
 
 
-takeCommand(inputFile);
+takeInput(inputFile);
 

@@ -12,7 +12,7 @@ describe("Robot", ()=>{
         f = "north";
     });
 
-    describe("place function", ()=>{
+    describe("place method", ()=>{
         const place = ()=>{
             r.place([x,y,f]);
             return report();
@@ -22,7 +22,7 @@ describe("Robot", ()=>{
         });
     });
 
-    describe("move function", ()=>{
+    describe("move method", ()=>{
         const move = () => {
             r.place([x,y,f]);
             r.move()
@@ -37,7 +37,7 @@ describe("Robot", ()=>{
         });
     })
 
-    describe ("rotate function", ()=>{
+    describe ("rotate method", ()=>{
         let direction;
         const rotate = ()=>{
             r.place([x,y,f]);
@@ -48,8 +48,22 @@ describe("Robot", ()=>{
             direction = "right";
             f = "west"
             expect(rotate()).toEqual("0, 0, north");
-        })
-    })
+        });
+        test("it should rotate anti-clockwise", ()=>{
+            direction = "left";
+            expect(rotate()).toEqual("0, 0, west");
+        });
+    });
+
+    describe ("report method", ()=>{
+        const report = ()=>{
+            r.place([x,y,f]);
+            return r.report();
+        };
+        test("it should report in correct format", ()=>{
+            expect(report()).toEqual("0, 0, NORTH");
+        });
+    });
 
 })
 
