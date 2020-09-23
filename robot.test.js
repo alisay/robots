@@ -39,9 +39,10 @@ describe("Robot", ()=>{
 
     describe ("rotate method", ()=>{
         let direction;
+        let cardinals = ["north", "south", "east", "west"]
         const rotate = ()=>{
             robot.place([x,y,f]);
-            robot.rotate(direction);
+            robot.rotate(direction, cardinals);
             return report();
         };
         test("it should rotate clockwise", ()=>{

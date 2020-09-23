@@ -1,7 +1,4 @@
-    PLACE 3,2,WEST
-    MOVE
-    LEFT
-    MOVE
+    PLACE 0,0,NORTH
     MOVE
     RIGHT
     MOVE

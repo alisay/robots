@@ -1,3 +1,5 @@
+const FORBIDDEN = [[1,1],[4,4]];
+
 class Robot {
     place(xyf){
             this.x = xyf[0];
@@ -6,34 +8,28 @@ class Robot {
     }
 
     move(){
+        let x = this.x
+        let y = this.y    
         switch (this.f){
             case "north":
-                if (this.y<4){
-                this.y++;
-                }
+                y++ 
                 break;
             case "south":
-                if (this.y>0){
-                    this.y--;
-                }
+                y--
                 break;
             case "east":
-                if (this.x<4){
-                    this.x++;
-                }
+                x++
                 break;
             case "west":
-                if (this.x>0){
-                    this.x--;
-                }
+                x--
                 break;
             default:
                 "invalid input";
         }
+        searchForArray(FORBIDDEN, [x,y]) ? true : this.x = x, this.y = y
     }
 
-    rotate(direction){
-        const cardinals=["north","east","south","west"];
+    rotate(direction, cardinals){
         let index = cardinals.indexOf(this.f);
         if(direction === "left"){
             index = ((index-1)+4)% 4;
@@ -52,4 +48,18 @@ class Robot {
     }
 }
 
+
+function searchForArray(maze, coords){
+    let i, j, current;
+    for(i = 0; i < maze.length; ++i){
+      if(coords.length === maze[i].length){
+        current = maze[i];
+        for(j = 0; j < coords.length && coords[j] === current[j]; ++j);
+        if(j === coords.length)
+          return true;
+      }
+    }
+    return false;
+  }
+  
 module.exports = Robot;
