@@ -1,4 +1,5 @@
 const FORBIDDEN = [[1,1],[4,4]];
+const COORDS = {x: [0,4], y: [0,4]};
 
 class Robot {
     place(xyf){
@@ -26,7 +27,7 @@ class Robot {
             default:
                 "invalid input";
         }
-        searchForArray(FORBIDDEN, [x,y]) ? true : this.x = x, this.y = y
+        !searchForArray(FORBIDDEN, [x,y]) && (boardRange(x,y)) ? (this.x = x, this.y = y) : true
     }
 
     rotate(direction, cardinals){
@@ -48,6 +49,9 @@ class Robot {
     }
 }
 
+const boardRange = (x, y)=>{
+    return (x >= COORDS.x[0] && x <= COORDS.x[1]) && (y >= COORDS.y[0] && y <= COORDS.y[1]);
+}
 
 function searchForArray(maze, coords){
     let i, j, current;
@@ -62,4 +66,4 @@ function searchForArray(maze, coords){
     return false;
   }
   
-module.exports = Robot;
+module.exports = {Robot, boardRange};

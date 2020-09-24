@@ -1,9 +1,9 @@
-const Robot = require("./robot");
+const {Robot, boardRange} = require('./robot');
 const fs = require('fs');
 
 const roboguy = new Robot();
 const CARDINALS = ["north", "east", "south", "west"];
-const COORDS = {x: [0,4], y: [0,4]};
+
 
 const readInput = ()=>{
     const inputFile = process.argv[2];
@@ -34,9 +34,6 @@ const validateInput = (data)=>{
     const validCommands = data.filter(element=>commands.includes(element) || element.startsWith("place"))
     
     // const integers = ["0","1","2","3","4"];//urgh 
-    const boardRange = (x, y)=>{
-        return (x >= COORDS.x[0] && x <= COORDS.x[1]) && (y >= COORDS.y[0] && y <= COORDS.y[1]);
-    }
     
     // const cardinals = ["north", "south", "east", "west"];
     
@@ -59,8 +56,6 @@ const validateInput = (data)=>{
 
     return validCommands;
     }
-
-validateInput()
 
 const ignoreStart = (data)=>{
     if(!data){
@@ -86,5 +81,5 @@ const executeCommands = (data)=>{
 
 executeCommands(ignoreStart(validateInput(parseInput(readInput())))); // break it into consts
 
-module.exports = {validateInput};
+module.exports = {validateInput, boardRange};
 

@@ -1,4 +1,5 @@
-const Robot = require('./robot');
+const {Robot} = require('./robot');
+
 
 describe("Robot", ()=>{
     let robot = new Robot();
